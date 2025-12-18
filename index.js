@@ -18,34 +18,48 @@ import express from "express";
 
 const app = express();
 const PORT = 4500;
+
 app.use(express.static("public"));
 app.use(express.json());
 
-app.get("/", (req, res) => {
+//Rutas---------------------------
+app.get("/api", (req, res) => {
   res.json({
     msg: "Petición GET",
   });
 });
 
-app.post("/", (req, res) => {
+app.post("/api", (req, res) => {
   const { correo, nombre, mensaje } = req.body;
+
+  //   BD.save({
+  //     correo,nombre,mensaje
+  //   })
+
   res.json({
-    msg: "Petición POST",
+    msg: "Datos guardados correctamente",
     correo,
     nombre,
     mensaje,
   });
 });
 
-app.put("/", (req, res) => {
+app.put("/api/:id", (req, res) => {
+  const { id } = req.params;
+  const datos = req.body;
   res.json({
     msg: "Petición PUT",
+    id,
+    datos,
   });
 });
 
-app.delete("/", (req, res) => {
+app.delete("/api/:id", (req, res) => {
+  const { id } = req.params;
+
   res.json({
-    msg: "Petición DELETE",
+    msg: "Se borró el producto con éxito! id de producto: " + id,
+    ok: true,
   });
 });
 
