@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const MONGO_URI =
-  "mongodb+srv://<user>:<password>@devtuc0.rpurqjb.mongodb.net/test";
+  "mongodb+srv://<user>:<password>@_tu_base_de_datos";
 
 export const dbConnect = async () => {
   try {
